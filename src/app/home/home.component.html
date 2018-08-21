@@ -1,0 +1,26 @@
+<div class="home-component container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let person of people">
+        <tr *ngIf="!person.disabled">
+          <td>
+            {{ person.name }}
+          </td>
+          <td [ngClass]="{ 'clr-green': person.age != null && person.age > 18, 'clr-red': person.age != null && person.age <= 18 }">
+            {{ person.age == null ? 'Unknown' : person.age }}
+          </td>
+          <td>
+            <button class="btn btn-xs btn-primary" (click)="archivePerson(person)">REMOVE</button>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
